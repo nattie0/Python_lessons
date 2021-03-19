@@ -6,3 +6,25 @@
 Выведите Yes, если из A в B можно перейти за два перехода, иначе выведите No.
 
 Обратите внимание на то, что не все ссылки внутри HTML документа могут вести на существующие HTML документы.
+
+Sample Input 1:
+
+https://stepic.org/media/attachments/lesson/24472/sample0.html
+https://stepic.org/media/attachments/lesson/24472/sample2.html
+Sample Output 1:
+
+Yes
+Sample Input 2:
+
+https://stepic.org/media/attachments/lesson/24472/sample0.html
+https://stepic.org/media/attachments/lesson/24472/sample1.html
+Sample Output 2:
+
+No
+Sample Input 3:
+
+https://stepic.org/media/attachments/lesson/24472/sample1.html
+https://stepic.org/media/attachments/lesson/24472/sample2.html
+Sample Output 3:
+
+Yes
