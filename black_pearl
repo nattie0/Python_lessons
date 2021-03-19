@@ -1,0 +1,52 @@
+class BlackPearl:
+
+    
+    def countIslands(self, grid: List[List[str]]) -> int:
+        """This method helps Jack to count islands in sea.
+
+        Args:
+            grid (List[List[str]]): map of the sea with islands. Just like a matrix..
+
+        Returns:
+            islands (int): number of islands.
+        """
+        self.grid = grid
+        islands = 0
+        rows = len(grid)
+        cols = len(grid[0])
+        alset = {(i,j) for j in range(cols) for i in range(rows)}
+        
+        for i in grid:
+            i.insert(0, '0')
+            i.append('0')
+        
+        grid.append(['0' for i in range(cols+2)])
+        grid.insert(0, ['0' for i in range(cols+2)])
+        
+        self.checked = set()
+                    
+        for i, j in alset:
+            if (i,j) not in self.checked and grid[i+1][j+1] == '1':
+                islands += 1
+                self.new_isl = {(i,j)}
+                self.countLands(i, j)
+                self.checked |= self.new_isl
+        return islands
+                
+    def countLands(self, i: int, j: int) -> set:
+        ''' This method search all cors of the new island'''
+        for x in ((i+1,j), (i-1,j), (i,j+1), (i,j-1)):
+            if x not in self.new_isl:
+                if self.grid[x[0]+1][x[1]+1] == '1':
+                    self.new_isl.add(x)
+                    self.countLands(*x)
+                else: self.checked -= {x}
+                
+q = [
+    ['1', '1', '1', '', '', ''],
+    ['1', '1', '1', '', '', ''],
+    ['1', '1', '', '', '', ''],
+    ['', '', '', '', '1', '1'],
+    ['1', '1', '', '1', '', '']]
+a = BlackPearl()
+print(a.countIslands(q))
