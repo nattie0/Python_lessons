@@ -22,6 +22,3 @@ def merge(left, right):
 		result.extend(left[left_cur:])
 	else: result.extend(right[right_cur:])
 	return result
-	
-arr = [4,7,5,3,9,5,1,0]
-print(merge_sort(arr))
